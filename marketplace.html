@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P2P Marketplace - CryptoP2P</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/marketplace.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-container">
+            <div class="header-left">
+                <div class="nav-logo">
+                    <i class="fas fa-coins"></i>
+                    <span>CryptoP2P</span>
+                </div>
+                <nav class="dashboard-nav">
+                    <a href="trading.html" class="nav-item">
+                        <i class="fas fa-chart-line"></i>
+                        Trading
+                    </a>
+                    <a href="#" class="nav-item active">
+                        <i class="fas fa-store"></i>
+                        Marketplace
+                    </a>
+                    <a href="wallet.html" class="nav-item">
+                        <i class="fas fa-wallet"></i>
+                        Wallet
+                    </a>
+                    <a href="security.html" class="nav-item">
+                        <i class="fas fa-shield-alt"></i>
+                        Security
+                    </a>
+                </nav>
+            </div>
+            <div class="header-right">
+                <div class="balance-display">
+                    <span class="balance-label">Total Balance</span>
+                    <span class="balance-amount">$12,450.67</span>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-dropdown">
+                        <a href="profile.html"><i class="fas fa-user-circle"></i> Profile</a>
+                        <a href="security.html"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="../index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="marketplace-main">
+        <div class="marketplace-container">
+            <!-- Marketplace Header -->
+            <div class="marketplace-header">
+                <div class="header-content">
+                    <h1>P2P Marketplace</h1>
+                    <p>Trade directly with other users using your preferred payment methods</p>
+                </div>
+                <button class="btn-primary" onclick="showCreateOfferModal()">
+                    <i class="fas fa-plus"></i>
+                    Create Offer
+                </button>
+            </div>
+
+            <!-- Filters and Search -->
+            <div class="marketplace-filters">
+                <div class="filter-section">
+                    <div class="trade-type-tabs">
+                        <button class="trade-tab active" data-type="buy">
+                            <i class="fas fa-shopping-cart"></i>
+                            Buy Crypto
+                        </button>
+                        <button class="trade-tab" data-type="sell">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            Sell Crypto
+                        </button>
+                    </div>
+                </div>
+
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <label>Cryptocurrency</label>
+                        <select class="filter-select" id="cryptoFilter">
+                            <option value="all">All Cryptocurrencies</option>
+                            <option value="BTC">Bitcoin (BTC)</option>
+                            <option value="ETH">Ethereum (ETH)</option>
+                            <option value="USDT">Tether (USDT)</option>
+                            <option value="BNB">Binance Coin (BNB)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Payment Method</label>
+                        <select class="filter-select" id="paymentFilter">
+                            <option value="all">All Payment Methods</option>
+                            <option value="bank">Bank Transfer</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="cash">Cash</option>
+                            <option value="card">Credit/Debit Card</option>
+                            <option value="mobile">Mobile Payment</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Amount Range</label>
+                        <div class="amount-inputs">
+                            <input type="number" placeholder="Min" id="minAmount">
+                            <span>-</span>
+                            <input type="number" placeholder="Max" id="maxAmount">
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Location</label>
+                        <select class="filter-select" id="locationFilter">
+                            <option value="all">All Locations</option>
+                            <option value="US">United States</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="EU">European Union</option>
+                            <option value="CA">Canada</option>
+                            <option value="AU">Australia</option>
+                        </select>
+                    </div>
+
+                    <button class="btn-secondary" onclick="applyFilters()">
+                        <i class="fas fa-filter"></i>
+                        Apply Filters
+                    </button>
+                </div>
+            </div>
+
+            <!-- Offers List -->
+            <div class="offers-container">
+                <div class="offers-header">
+                    <div class="offers-count">
+                        <span id="offersCount">24</span> offers found
+                    </div>
+                    <div class="sort-controls">
+                        <label>Sort by:</label>
+                        <select class="sort-select" id="sortBy">
+                            <option value="price">Best Price</option>
+                            <option value="rating">Highest Rating</option>
+                            <option value="trades">Most Trades</option>
+                            <option value="online">Online Now</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="offers-list" id="offersList">
+                    <!-- Buy Offers -->
+                    <div class="offer-card">
+                        <div class="offer-header">
+                            <div class="trader-info">
+                                <div class="trader-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="trader-details">
+                                    <span class="trader-name">CryptoTrader123</span>
+                                    <div class="trader-stats">
+                                        <span class="rating">
+                                            <i class="fas fa-star"></i>
+                                            4.9 (156 trades)
+                                        </span>
+                                        <span class="online-status online">
+                                            <i class="fas fa-circle"></i>
+                                            Online
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="offer-type buy">
+                                <i class="fas fa-arrow-up"></i>
+                                Buying BTC
+                            </div>
+                        </div>
+
+                        <div class="offer-details">
+                            <div class="price-info">
+                                <div class="price">
+                                    <span class="price-value">$45,850.00</span>
+                                    <span class="price-label">per BTC</span>
+                                </div>
+                                <div class="price-margin positive">
+                                    +1.37% above market
+                                </div>
+                            </div>
+
+                            <div class="limits">
+                                <span class="limit-label">Limits:</span>
+                                <span class="limit-range">$500 - $5,000</span>
+                            </div>
+
+                            <div class="payment-methods">
+                                <span class="payment-method">
+                                    <i class="fas fa-university"></i>
+                                    Bank Transfer
+                                </span>
+                                <span class="payment-method">
+                                    <i class="fab fa-paypal"></i>
+                                    PayPal
+                                </span>
+                            </div>
+
+                            <div class="offer-terms">
+                                <p>Fast and secure transactions. Payment within 15 minutes. Verified accounts only.</p>
+                            </div>
+                        </div>
+
+                        <div class="offer-actions">
+                            <div class="offer-stats">
+                                <span><i class="fas fa-clock"></i> ~15 min</span>
+                                <span><i class="fas fa-map-marker-alt"></i> United States</span>
+                            </div>
+                            <button class="btn-primary" onclick="startTrade('buy', 'CryptoTrader123')">
+                                Sell to this user
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="offer-card">
+                        <div class="offer-header">
+                            <div class="trader-info">
+                                <div class="trader-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="trader-details">
+                                    <span class="trader-name">BitcoinMaster</span>
+                                    <div class="trader-stats">
+                                        <span class="rating">
+                                            <i class="fas fa-star"></i>
+                                            4.8 (89 trades)
+                                        </span>
+                                        <span class="online-status offline">
+                                            <i class="fas fa-circle"></i>
+                                            Last seen 2h ago
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="offer-type sell">
+                                <i class="fas fa-arrow-down"></i>
+                                Selling BTC
+                            </div>
+                        </div>
+
+                        <div class="offer-details">
+                            <div class="price-info">
+                                <div class="price">
+                                    <span class="price-value">$44,950.00</span>
+                                    <span class="price-label">per BTC</span>
+                                </div>
+                                <div class="price-margin negative">
+                                    -0.62% below market
+                                </div>
+                            </div>
+
+                            <div class="limits">
+                                <span class="limit-label">Limits:</span>
+                                <span class="limit-range">$100 - $2,500</span>
+                            </div>
+
+                            <div class="payment-methods">
+                                <span class="payment-method">
+                                    <i class="fas fa-credit-card"></i>
+                                    Credit Card
+                                </span>
+                                <span class="payment-method">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    Mobile Payment
+                                </span>
+                            </div>
+
+                            <div class="offer-terms">
+                                <p>Quick release after payment confirmation. Available 24/7. New traders welcome.</p>
+                            </div>
+                        </div>
+
+                        <div class="offer-actions">
+                            <div class="offer-stats">
+                                <span><i class="fas fa-clock"></i> ~30 min</span>
+                                <span><i class="fas fa-map-marker-alt"></i> United Kingdom</span>
+                            </div>
+                            <button class="btn-primary" onclick="startTrade('sell', 'BitcoinMaster')">
+                                Buy from this user
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="offer-card">
+                        <div class="offer-header">
+                            <div class="trader-info">
+                                <div class="trader-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="trader-details">
+                                    <span class="trader-name">EthereumPro</span>
+                                    <div class="trader-stats">
+                                        <span class="rating">
+                                            <i class="fas fa-star"></i>
+                                            4.7 (234 trades)
+                                        </span>
+                                        <span class="online-status online">
+                                            <i class="fas fa-circle"></i>
+                                            Online
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="offer-type buy">
+                                <i class="fas fa-arrow-up"></i>
+                                Buying ETH
+                            </div>
+                        </div>
+
+                        <div class="offer-details">
+                            <div class="price-info">
+                                <div class="price">
+                                    <span class="price-value">$3,145.00</span>
+                                    <span class="price-label">per ETH</span>
+                                </div>
+                                <div class="price-margin positive">
+                                    +0.78% above market
+                                </div>
+                            </div>
+
+                            <div class="limits">
+                                <span class="limit-label">Limits:</span>
+                                <span class="limit-range">$200 - $10,000</span>
+                            </div>
+
+                            <div class="payment-methods">
+                                <span class="payment-method">
+                                    <i class="fas fa-university"></i>
+                                    Bank Transfer
+                                </span>
+                                <span class="payment-method">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    Cash
+                                </span>
+                            </div>
+
+                            <div class="offer-terms">
+                                <p>Experienced trader with fast processing. Bulk orders welcome. ID verification required.</p>
+                            </div>
+                        </div>
+
+                        <div class="offer-actions">
+                            <div class="offer-stats">
+                                <span><i class="fas fa-clock"></i> ~10 min</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Canada</span>
+                            </div>
+                            <button class="btn-primary" onclick="startTrade('buy', 'EthereumPro')">
+                                Sell to this user
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="load-more">
+                    <button class="btn-outline" onclick="loadMoreOffers()">
+                        <i class="fas fa-plus"></i>
+                        Load More Offers
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Create Offer Modal -->
+    <div id="createOfferModal" class="modal">
+        <div class="modal-content large-modal">
+            <div class="modal-header">
+                <h3>Create New Offer</h3>
+                <span class="close" onclick="closeModal('createOfferModal')">&times;</span>
+            </div>
+            <form class="offer-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>I want to</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="offerType" value="buy" checked>
+                                <span>Buy Cryptocurrency</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="offerType" value="sell">
+                                <span>Sell Cryptocurrency</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Cryptocurrency</label>
+                        <select required>
+                            <option value="">Select cryptocurrency</option>
+                            <option value="BTC">Bitcoin (BTC)</option>
+                            <option value="ETH">Ethereum (ETH)</option>
+                            <option value="USDT">Tether (USDT)</option>
+                            <option value="BNB">Binance Coin (BNB)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Price per unit</label>
+                        <div class="input-group">
+                            <input type="number" placeholder="0.00" step="0.01" required>
+                            <span class="input-suffix">USD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Minimum Amount</label>
+                        <div class="input-group">
+                            <input type="number" placeholder="0.00" step="0.01" required>
+                            <span class="input-suffix">USD</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Maximum Amount</label>
+                        <div class="input-group">
+                            <input type="number" placeholder="0.00" step="0.01" required>
+                            <span class="input-suffix">USD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Payment Methods</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" value="bank">
+                            <span><i class="fas fa-university"></i> Bank Transfer</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" value="paypal">
+                            <span><i class="fab fa-paypal"></i> PayPal</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" value="card">
+                            <span><i class="fas fa-credit-card"></i> Credit/Debit Card</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" value="cash">
+                            <span><i class="fas fa-money-bill-wave"></i> Cash</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" value="mobile">
+                            <span><i class="fas fa-mobile-alt"></i> Mobile Payment</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Trading Terms</label>
+                    <textarea placeholder="Describe your trading terms, requirements, and any special instructions..." rows="4"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Payment Window</label>
+                        <select required>
+                            <option value="">Select payment window</option>
+                            <option value="15">15 minutes</option>
+                            <option value="30">30 minutes</option>
+                            <option value="60">1 hour</option>
+                            <option value="120">2 hours</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <select required>
+                            <option value="">Select your location</option>
+                            <option value="US">United States</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="EU">European Union</option>
+                            <option value="CA">Canada</option>
+                            <option value="AU">Australia</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('createOfferModal')">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Create Offer
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Trade Modal -->
+    <div id="tradeModal" class="modal">
+        <div class="modal-content large-modal">
+            <div class="modal-header">
+                <h3 id="tradeModalTitle">Start Trade</h3>
+                <span class="close" onclick="closeModal('tradeModal')">&times;</span>
+            </div>
+            <div class="trade-content">
+                <div class="trade-summary">
+                    <div class="trader-profile">
+                        <div class="trader-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="trader-info">
+                            <h4 id="traderName">CryptoTrader123</h4>
+                            <div class="trader-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.9 (156 trades)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trade-details">
+                        <div class="detail-row">
+                            <span>Price:</span>
+                            <span id="tradePrice">$45,850.00 per BTC</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Payment Methods:</span>
+                            <span id="tradePaymentMethods">Bank Transfer, PayPal</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Payment Window:</span>
+                            <span id="tradePaymentWindow">15 minutes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="trade-form">
+                    <div class="form-group">
+                        <label>Amount to trade</label>
+                        <div class="input-group">
+                            <input type="number" id="tradeAmount" placeholder="0.00" step="0.01" required>
+                            <span class="input-suffix">USD</span>
+                        </div>
+                        <div class="amount-info">
+                            <span>≈ <span id="cryptoAmount">0.00000000</span> BTC</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Payment Method</label>
+                        <select id="selectedPaymentMethod" required>
+                            <option value="">Select payment method</option>
+                            <option value="bank">Bank Transfer</option>
+                            <option value="paypal">PayPal</option>
+                        </select>
+                    </div>
+
+                    <div class="trade-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div>
+                            <strong>Important:</strong> Only send payment after the trade has started and crypto is in escrow. 
+                            Never send payment outside of this platform.
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="closeModal('tradeModal')">
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-handshake"></i>
+                            Start Trade
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/marketplace.js"></script>
+</body>
+</html>
+

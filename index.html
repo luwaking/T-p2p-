@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoP2P - Secure Peer-to-Peer Cryptocurrency Exchange</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-coins"></i>
+                    <span>CryptoP2P</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#features" class="nav-link">Features</a></li>
+                    <li><a href="#security" class="nav-link">Security</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="pages/trading.html" class="nav-link">Trade</a></li>
+                </ul>
+                <div class="nav-auth">
+                    <button class="btn-secondary" onclick="showLoginModal()">Login</button>
+                    <button class="btn-primary" onclick="showSignupModal()">Sign Up</button>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Trade Crypto <span class="gradient-text">Peer-to-Peer</span>
+                    <br>Securely & Privately
+                </h1>
+                <p class="hero-description">
+                    Join the world's most secure P2P cryptocurrency exchange. Trade directly with other users, 
+                    set your own prices, and enjoy complete control over your transactions.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">$2.1T+</span>
+                        <span class="stat-label">Trading Volume</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">500K+</span>
+                        <span class="stat-label">Active Users</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">99.9%</span>
+                        <span class="stat-label">Uptime</span>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <button class="btn-primary btn-large" onclick="showSignupModal()">
+                        <i class="fas fa-rocket"></i>
+                        Start Trading Now
+                    </button>
+                    <button class="btn-outline btn-large" onclick="scrollToSection('features')">
+                        <i class="fas fa-play"></i>
+                        Learn More
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="crypto-cards">
+                    <div class="crypto-card bitcoin">
+                        <i class="fab fa-bitcoin"></i>
+                        <span>Bitcoin</span>
+                        <span class="price">$45,230</span>
+                    </div>
+                    <div class="crypto-card ethereum">
+                        <i class="fab fa-ethereum"></i>
+                        <span>Ethereum</span>
+                        <span class="price">$3,120</span>
+                    </div>
+                    <div class="crypto-card usdt">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span>USDT</span>
+                        <span class="price">$1.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose CryptoP2P?</h2>
+                <p>Experience the future of cryptocurrency trading with our advanced P2P platform</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure Escrow</h3>
+                    <p>Advanced escrow system protects both buyers and sellers with smart contract technology</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Direct Trading</h3>
+                    <p>Trade directly with other users without intermediaries, maintaining full control</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3>Low Fees</h3>
+                    <p>Enjoy competitive trading fees with transparent pricing and no hidden costs</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Global Access</h3>
+                    <p>Trade with users worldwide using multiple payment methods and currencies</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Ready</h3>
+                    <p>Fully responsive design works perfectly on all devices and screen sizes</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer support and dispute resolution services</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section id="security" class="security">
+        <div class="container">
+            <div class="security-content">
+                <div class="security-text">
+                    <h2>Bank-Level Security</h2>
+                    <p>Your security is our top priority. We implement multiple layers of protection to ensure your funds and data are always safe.</p>
+                    <div class="security-features">
+                        <div class="security-item">
+                            <i class="fas fa-lock"></i>
+                            <div>
+                                <h4>256-bit SSL Encryption</h4>
+                                <p>All data transmission is encrypted with military-grade security</p>
+                            </div>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-key"></i>
+                            <div>
+                                <h4>Two-Factor Authentication</h4>
+                                <p>Additional security layer with SMS and authenticator app support</p>
+                            </div>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-snowflake"></i>
+                            <div>
+                                <h4>Cold Storage</h4>
+                                <p>95% of funds stored offline in secure cold storage wallets</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="security-visual">
+                    <div class="security-shield">
+                        <i class="fas fa-shield-alt"></i>
+                        <div class="security-rings">
+                            <div class="ring ring-1"></div>
+                            <div class="ring ring-2"></div>
+                            <div class="ring ring-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Trading?</h2>
+                <p>Join thousands of users who trust CryptoP2P for secure cryptocurrency trading</p>
+                <div class="cta-actions">
+                    <button class="btn-primary btn-large" onclick="showSignupModal()">
+                        Create Account
+                    </button>
+                    <button class="btn-outline btn-large" onclick="window.open('pages/trading.html')">
+                        View Trading Dashboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-coins"></i>
+                        <span>CryptoP2P</span>
+                    </div>
+                    <p>The world's most secure peer-to-peer cryptocurrency exchange platform.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="pages/trading.html">Trading</a></li>
+                        <li><a href="pages/marketplace.html">Marketplace</a></li>
+                        <li><a href="pages/wallet.html">Wallet</a></li>
+                        <li><a href="pages/security.html">Security</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                        <li><a href="#">Status Page</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CryptoP2P. All rights reserved.</p>
+                <p>Licensed and regulated cryptocurrency exchange platform.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Login to CryptoP2P</h3>
+                <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            </div>
+            <form class="auth-form">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter your password" required>
+                </div>
+                <div class="form-options">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn-primary btn-full">Login</button>
+                <div class="auth-divider">
+                    <span>Don't have an account?</span>
+                    <a href="#" onclick="switchModal('loginModal', 'signupModal')">Sign up</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create Account</h3>
+                <span class="close" onclick="closeModal('signupModal')">&times;</span>
+            </div>
+            <form class="auth-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Create a strong password" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" placeholder="Confirm your password" required>
+                </div>
+                <div class="form-options">
+                    <label class="checkbox">
+                        <input type="checkbox" required>
+                        <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+                    </label>
+                </div>
+                <button type="submit" class="btn-primary btn-full">Create Account</button>
+                <div class="auth-divider">
+                    <span>Already have an account?</span>
+                    <a href="#" onclick="switchModal('signupModal', 'loginModal')">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+
